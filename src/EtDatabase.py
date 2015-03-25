@@ -24,13 +24,18 @@ def loadCsv(filename, dialect = None):
     csvFile.close()
     return rowData
 
-def loadExcelSheetAsCsv(filename, sheetName = None):
+def openExcel(filename):
     # Determine if the file exists. If not, raise an exception.
     if not os.path.isfile(filename):
         raise Exception("Error: " + filename + " not found.")
     
-    # Load the workbook and grab the sheet in question.
-    workbook = xlrd.open_workbook(filename)
+    # Load the workbook.
+    try: workbook = xlrd.open_workbook(filename)
+    except: pass
+
+    return workbook
+
+def getExcelSheetAsCsv(workbook, sheetName = None):
     if sheetName != None:
         sheet = workbook.sheet_by_name(sheetName)
     else:
@@ -44,9 +49,10 @@ def loadExcelSheetAsCsv(filename, sheetName = None):
             values.append(sheet.cell(row, col).value)
         rowData.append(values)
 
-    # Release the workbook and return the data    
-    workbook.release_resources()
     return rowData
+
+def loadExcelSheetAsCsv(filename, sheetName = None):
+    return getExcelSheetAsCsv(openExcel(filename), sheetName)
 
 def saveCsv(filename, rowData, insertKey = False):
     # Open file for writing
