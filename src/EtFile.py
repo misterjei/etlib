@@ -86,24 +86,25 @@ def openFile(filePath, mode):
     else:
         return open(filePath, mode)
 
-def saveJsonFile(saveObject, filename, indentLevel=2):
+def saveJsonFile(filename, saveObject, indentLevel=2):
     jsonFile = open(filename, 'w')
-    jsonFile.write("[\n")
-    i = 0
-    for item in saveObject:
-        i = i + 1
-        try:
-            json.dump(item, jsonFile, indent=indentLevel)
-            if i != len(saveObject):
-                jsonFile.write(",\n")
-        except:
-            print item
+    json.dump(saveObject, jsonFile, indent=indentLevel)
+#    jsonFile.write("[\n")
+#    i = 0
+#    for item in saveObject:
+#        i = i + 1
+#        try:
+#            json.dump(item, jsonFile, indent=indentLevel)
+#            if i != len(saveObject):
+#                jsonFile.write(",\n")
+#        except:
+#            print item
 #    json.dump(saveObject, jsonFile, indent=indentLevel)
-    jsonFile.write("]\n")
+#    jsonFile.write("]\n")
     jsonFile.close()
     return
 
-def savePickleFile(saveObject, filename):
+def savePickleFile(filename, saveObject):
     pickleFile = open(filename, 'wb')
     pickle.dump(saveObject, pickleFile)
     pickleFile.close()
