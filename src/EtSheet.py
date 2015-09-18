@@ -25,7 +25,7 @@ def getColumn(rowData, number):
 def getColumnsNum(rowData):
     columns = 0
     
-    for row in rowData.re:
+    for row in rowData:
         if len(row) > columns:
             columns = len(row)
 
