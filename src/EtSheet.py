@@ -1,4 +1,4 @@
-import xlrd
+﻿import xlrd
 import os
 import csv, codecs
 
@@ -84,7 +84,7 @@ def loadExcelSheetAsCsv(filename, sheetName = None):
 
 def saveCsv(filename, rowData, insertKey = False):
     # Open file for writing
-    csvFile = codecs.open(filename, 'w')
+    csvFile = codecs.open(filename, 'wb')
     writer = csv.writer(csvFile, quotechar='"', delimiter=',')
 
     # Write the data
