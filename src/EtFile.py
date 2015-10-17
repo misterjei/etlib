@@ -1,3 +1,22 @@
+'''
+This file is part of the EdTech library project at Full Sail University.
+
+    Foobar is free software: you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+
+    Foobar is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with Foobar.  If not, see <http://www.gnu.org/licenses/>.
+
+    Copyright (C) 2014, 2015 Full Sail University.
+'''
+
 import os
 import platform
 import tempfile
@@ -86,9 +105,9 @@ def openFile(filePath, mode):
     else:
         return open(filePath, mode)
 
-def saveJsonFile(filename, saveObject, indentLevel=2):
+def saveJsonFile(filename, saveObject, **kwargs):
     jsonFile = open(filename, 'w')
-    json.dump(saveObject, jsonFile, indent=indentLevel)
+    json.dump(saveObject, jsonFile, **kwargs)
 #    jsonFile.write("[\n")
 #    i = 0
 #    for item in saveObject:
