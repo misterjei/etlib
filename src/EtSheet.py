@@ -44,7 +44,7 @@ def getColumn(rowData, number):
 def getColumnsNum(rowData):
     columns = 0
     
-    for row in rowData.re:
+    for row in rowData:
         if len(row) > columns:
             columns = len(row)
 
@@ -103,7 +103,7 @@ def loadExcelSheetAsCsv(filename, sheetName = None):
 
 def saveCsv(filename, rowData, insertKey = False):
     # Open file for writing
-    csvFile = codecs.open(filename, 'w')
+    csvFile = codecs.open(filename, 'wb')
     writer = csv.writer(csvFile, quotechar='"', delimiter=',')
 
     # Write the data
