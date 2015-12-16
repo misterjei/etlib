@@ -54,14 +54,19 @@ class TkModeless(object):
     def Close(self): self.window.destroy()
 
 # http://stackoverflow.com/questions/3085696/adding-a-scrollbar-to-a-grid-of-widgets-in-tkinter
-def AddScrollbar(root, frame):
-    canvas = Canvas(root, borderwidth = 0)
-    vsb = ttk.Scrollbar(root, orient = "vertical", command = canvas.yview)
-    canvas.configure(yscrollcommand = vsb.set)
-    frame.winfo_parent = canvas
-    frame.pack()
-    canvas.create_window((0, 0), window = frame, anchor = "nw")
-    vsb.pack(side = "right", fill = "y")
-    canvas.pack(side = "left", fill = "both", expand = True)
-    frame.bind("<Configure>", lambda event, canvas = canvas: canvas.configure(scrollregion = canvas.bbox("all")))
-    return canvas
+class FrameWithScrollbar(object):
+    """A Frame with attached Scrollbar."""
+    def __init__(self, root):
+        self.root = root
+
+        self.canvas = Canvas(self.root, borderwidth = 0)
+        self.frame = ttk.Frame(self.canvas)
+
+    def AddScrollbar(self):
+        vsb = ttk.Scrollbar(self.root, orient = "vertical", command = self.canvas.yview)
+        self.canvas.configure(yscrollcommand = vsb.set)
+        self.frame.pack()
+        self.canvas.create_window((0, 0), window = self.frame, anchor = "nw")
+        vsb.pack(side = "right", fill = "y")
+        self.canvas.pack(side = "left", fill = "both", expand = True)
+        self.frame.bind("<Configure>", lambda event, canvas = self.canvas: self.canvas.configure(scrollregion = self.canvas.bbox("all")))
