@@ -52,3 +52,16 @@ class TkModeless(object):
         self.window.update_idletasks()
 
     def Close(self): self.window.destroy()
+
+# http://stackoverflow.com/questions/3085696/adding-a-scrollbar-to-a-grid-of-widgets-in-tkinter
+def AddScrollbar(root, frame):
+    canvas = Canvas(root, borderwidth = 0)
+    vsb = ttk.Scrollbar(root, orient = "vertical", command = canvas.yview)
+    canvas.configure(yscrollcommand = vsb.set)
+    frame.winfo_parent = canvas
+    frame.pack()
+    canvas.create_window((0, 0), window = frame, anchor = "nw")
+    vsb.pack(side = "right", fill = "y")
+    canvas.pack(side = "left", fill = "both", expand = True)
+    frame.bind("<Configure>", lambda event, canvas = canvas: canvas.configure(scrollregion = canvas.bbox("all")))
+    return canvas
