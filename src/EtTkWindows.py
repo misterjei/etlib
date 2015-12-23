@@ -56,10 +56,10 @@ class TkModeless(object):
 # http://stackoverflow.com/questions/3085696/adding-a-scrollbar-to-a-grid-of-widgets-in-tkinter
 class FrameWithScrollbar(object):
     """A Frame with attached Scrollbar."""
-    def __init__(self, root):
+    def __init__(self, root, width, height):
         self.root = root
 
-        self.canvas = Canvas(self.root, borderwidth = 0)
+        self.canvas = Canvas(self.root, borderwidth = 0, width = width, height = height)
         self.frame = ttk.Frame(self.canvas)
 
     def AddScrollbar(self):
