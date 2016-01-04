@@ -39,6 +39,11 @@ def TkCenter(win):
     win.geometry('{}x{}+{}+{}'.format(width, height, x, y))
     win.deiconify()
 
+def TextGet(text): return text.get("1.0", "end")
+def TextSet(text, str):
+    text.delete("1.0", "end")
+    text.insert("1.0", str)
+
 class TkModeless(object):
     """A popup."""
     def __init__(self, root, title, message):

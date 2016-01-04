@@ -50,7 +50,7 @@ class Config(object):
         try: val = int(self.config.get(section, name))
         except:
             val = default
-            self.config.set(section, name, str(val))
+            self.SetInt(section, name, val)
         return val
     def GetChar(self, section, name, default):
         try: val = self.config.get(section, name)[0]
@@ -62,5 +62,8 @@ class Config(object):
         try: val = self.config.get(section, name)
         except:
             val = default
-            self.config.set(section, name, val)
+            self.SetStr(section, name, val)
         return val
+
+    def SetInt(self, section, name, val): self.SetStr(section, name, str(val))
+    def SetStr(self, section, name, val): self.config.set(section, name, val)
