@@ -44,6 +44,7 @@ def TextGet(text): return text.get("1.0", "end")
 def TextSet(text, str):
     text.delete("1.0", "end")
     text.insert("1.0", str)
+def TextAdd(text, str): text.insert("end", str)
 
 class TkModeless(object):
     """A popup."""
