@@ -143,3 +143,11 @@ class Table(object):
         for row in self.entries:
             for i in range(len(row)):
                 row[i].config(width = widths[i])
+
+    def GetStrings(self):
+        rows = []
+        for row in self.stringVars:
+            cols = []
+            for col in row: cols.append(col.get())
+            rows.append(cols)
+        return rows
