@@ -33,6 +33,8 @@ class Config(object):
     def __del__(self):
         with open(self.file, "wb") as configFile: self.config.write(configFile)
 
+    def GetFile(self): return self.file
+
     def Section(self, section):
         try: self.config.get(section, self.HasSection)
         except:
