@@ -34,7 +34,7 @@ def getHomePath():
 def getAppDataPath():
     # Grab the app-specific data folder from the OS (if available.)
     if platform.system() == 'Windows':
-        from win32com.shell import shellcon, shell
+        from win32com.shell import shellcon, shell # http://sourceforge.net/projects/pywin32/files/
         return "{}\\".format(shell.SHGetFolderPath(0, shellcon.CSIDL_APPDATA, 0, 0))
     elif platform.system() == 'Darwin':
         return "{}/".format(os.path.expanduser("~/Library"))
