@@ -124,3 +124,8 @@ def write_multiple(sheet, rowIndex, colIndex, dataList, style):
     for cellData in dataList:
         sheet.write(rowIndex, colIndex, cellData, style)
         colIndex = colIndex + 1
+
+# http://stackoverflow.com/questions/9574793/how-to-convert-a-python-datetime-datetime-to-excel-serial-date-number
+def excel_date(date):
+    delta = date - datetime.date(1899, 12, 30) # TODO: Origin date different for Mac Excel?
+    return float(delta.days) + (float(delta.seconds) / 86400) # 86400 == seconds/day
