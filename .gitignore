@@ -1,2 +1,4 @@
 edtech/*.pyc
 .idea/workspace.xml
+MANIFEST
+dist/

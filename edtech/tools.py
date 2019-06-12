@@ -39,5 +39,5 @@ def decodeString(value, codecs=defaultCodecs):
             return value.decode(encoding)
         except:
             pass
-    print "Couldn't decode string: " + value
+    print("Couldn't decode string: " + value)
 

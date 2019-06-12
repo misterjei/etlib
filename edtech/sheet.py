@@ -109,7 +109,7 @@ def saveCsv(filename, rowData, insertKey = False):
     # Write the data
     if insertKey:
         for key, row in rowData.iteritems():
-            print "Key: " + key + " Value: " + row
+            print("Key: " + key + " Value: " + row)
             writer.writerow([ key ] + row)
     else:
 #       i = 0

@@ -36,7 +36,7 @@ class Client(object):
             self.cookie_jar = cookielib.MozillaCookieJar()
             self.cookie_jar.load(cookieFile)
             for cookie in self.cookie_jar:
-                print cookie
+                print(cookie)
         else:
             self.cookie_jar = cookielib.CookieJar()
         
